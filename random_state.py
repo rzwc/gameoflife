@@ -2,6 +2,26 @@ import sys
 
 import random 
 
+def render(board):
+	width = len(board[0])
+	top_border = '--'
+	for x in range(width):
+		top_border += '-'
+	print(top_border)
+	
+	for row in range(len(board)):
+		row_str = '|'
+		for x in board[row]:
+			if x == 0:
+				row_str += 'o'
+			elif x == 1:
+				row_str += '.'
+		row_str += '|'
+		print(row_str)
+		
+	print(top_border)
+	
+
 def random_state(width, height):
 	arr = dead_state(width, height)
 	
@@ -19,7 +39,7 @@ def random_state(width, height):
 		width_index = 0
 		height_index += 1
 		
-	print(arr)
+	return arr
 	
 def dead_state(width, height):
 	
@@ -34,5 +54,5 @@ if __name__ == "__main__":
 		print(f'Usage: python {sys.argv[0]} width height', file=sys.stderr)
 		sys.exit()
 	
-	random_state(sys.argv[1], sys.argv[2])
+	render(random_state(sys.argv[1],sys.argv[2]))
 	
