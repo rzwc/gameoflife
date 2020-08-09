@@ -2,6 +2,7 @@ import sys
 
 from render import render
 from random_state import random_state, dead_state
+from next_board_state import next_board_state
 
 if __name__ == "__main__":
 
@@ -10,4 +11,9 @@ if __name__ == "__main__":
 		sys.exit()
 		
 	arr = random_state(sys.argv[1], sys.argv[2])
-	render(arr)
+	#render(arr)
+	while True:
+		arr = next_board_state(arr)
+		render(arr)	
+	
+	

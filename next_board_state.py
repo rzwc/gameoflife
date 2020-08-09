@@ -1,6 +1,9 @@
 from random_state import dead_state
 
-def next_board_state(board, width, height):
+def next_board_state(board):
+
+	width = len(board[0])
+	height = len(board)
 
 	nextboard = dead_state(width, height)
 	
@@ -60,7 +63,7 @@ def next_board_state(board, width, height):
 								neighbours += 1
 				
 				if x == (height-1):
-					for i in range(x-1, height):
+					for i in range(x-1, x+1):
 						for j in range(y-1, y+2):
 							if board[i][j] == 1:
 								neighbours += 1
@@ -73,11 +76,12 @@ def next_board_state(board, width, height):
 							
 				if y == (width-1):
 					for i in range(x-1, x+2):
-						for j in range(y-1, width):
+						for j in range(y-1, y+1):
 							if board[i][j] == 1:
 								neighbours += 1
 				
 				if board[x][y] == 1:
+					neighbours -= 1
 					if neighbours == 0 or neighbours == 1:
 						nextboard[x][y] = 0
 					elif neighbours == 2 or neighbours == 3:
@@ -95,6 +99,7 @@ def next_board_state(board, width, height):
 							neighbours += 1
 			
 				if board[x][y] == 1:
+					neighbours -= 1
 					if neighbours == 0 or neighbours == 1:
 						nextboard[x][y] = 0
 					elif neighbours == 2 or neighbours == 3:
