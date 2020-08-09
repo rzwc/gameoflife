@@ -9,9 +9,85 @@ def next_board_state(board, width, height):
 			current_cell_value = board[x][y]
 			neighbours = 0
 			if x == 0 and y == 0 or x == 0 and y == (width-1) or x == (height-1) and y == 0 or x == (height-1) and y == (width-1):
-				board[x][y] == 0
+				if x == 0 and y == 0:
+					if board[x][y+1] == 1:
+						neighbours += 1
+					if board[x+1][y] == 1:
+						neighbours += 1
+					if board[x+1][y+1] == 1:
+						neighbours += 1
+						
+				if x == 0 and y == (width-1):
+					if board[x][y-1] == 1:
+						neighbours += 1
+					if board[x+1][y] == 1:
+						neighbours += 1
+					if board[x-1][y-1] == 1:
+						neighbours += 1
+						
+				if x == (height-1) and y == 0:
+					if board[x][y+1] == 1:
+						neighbours += 1
+					if board[x-1][y] == 1:
+						neighbours += 1
+					if board[x-1][y+1] == 1:
+						neighbours += 1
+						
+				if x == (height-1) and y == (width-1):
+					if board[x][y-1] == 1:
+						neighbours += 1
+					if board[x-1][y] == 1:
+						neighbours += 1
+					if board[x-1][y-1] == 1:
+						neighbours += 1
+						
+				if board[x][y] == 1:
+					if neighbours == 0 or neighbours == 1:
+						nextboard[x][y] = 0
+					elif neighbours == 2 or neighbours == 3:
+						nextboard[x][y] = 1
+					elif neighbours > 3:
+						nextboard[x][y] = 0
+				elif board[x][y] == 0:
+					if neighbours == 3:
+						nextboard[x][y] = 1
+						
 			elif x == 0 or x == (height-1) or y == 0 or y == (width-1):
-				board[x][y] == 0
+				if x == 0:
+					for i in range(x, x+2):
+						for j in range(y-1, y+2):
+							if board[i][j] == 1:
+								neighbours += 1
+				
+				if x == (height-1):
+					for i in range(x-1, height):
+						for j in range(y-1, y+2):
+							if board[i][j] == 1:
+								neighbours += 1
+				
+				if y == 0:
+					for i in range(x-1, x+2):
+						for j in range(y, y+2):
+							if board[i][j] == 1:
+								neighbours += 1
+							
+				if y == (width-1):
+					for i in range(x-1, x+2):
+						for j in range(y-1, width):
+							if board[i][j] == 1:
+								neighbours += 1
+				
+				if board[x][y] == 1:
+					if neighbours == 0 or neighbours == 1:
+						nextboard[x][y] = 0
+					elif neighbours == 2 or neighbours == 3:
+						nextboard[x][y] = 1
+					elif neighbours > 3:
+						nextboard[x][y] = 0
+				elif board[x][y] == 0:
+					if neighbours == 3:
+						nextboard[x][y] = 1
+						
 			else: 
 				for i in range(x-1, x+2):
 					for j in range(y-1, y+2):
