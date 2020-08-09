@@ -17,16 +17,16 @@ def next_board_state(board, width, height):
 					for j in range(y-1, y+2):
 						if board[i][j] == 1:
 							neighbours += 1
-							
-			if board[x][y] == 1:
-				if neighbours == 0 or neighbours == 1:
-					nextboard[x][y] == 0
-				elif neighbours == 2 or neighbours == 3:
-					nextboard[x][y] == 1
-				elif neighbours > 3:
-					nextboard[x][y] == 0
-			elif board[x][y] == 0:
-				if neighbours == 3:
-					nextboard[x][y] == 1
+			
+				if board[x][y] == 1:
+					if neighbours == 0 or neighbours == 1:
+						nextboard[x][y] = 0
+					elif neighbours == 2 or neighbours == 3:
+						nextboard[x][y] = 1
+					elif neighbours > 3:
+						nextboard[x][y] = 0
+				elif board[x][y] == 0:
+					if neighbours == 3:
+						nextboard[x][y] = 1
 				
 	return nextboard
