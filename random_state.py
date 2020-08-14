@@ -10,7 +10,7 @@ def random_state(width, height):
 	while height_index < len(arr):
 		while width_index < len(arr[height_index]):
 			random_number = random.random()
-			if random_number >= 0.6:
+			if random_number >= 0.4:
 				cell_state = 0
 			else:
 				cell_state = 1
@@ -35,4 +35,5 @@ if __name__ == "__main__":
 		sys.exit()
 	
 	render(random_state(sys.argv[1],sys.argv[2]))
+	
 	

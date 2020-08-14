@@ -9,9 +9,9 @@ def render(board):
 		row_str = '|'
 		for x in board[row]:
 			if x == 0:
-				row_str += 'o'
-			elif x == 1:
 				row_str += ' '
+			elif x == 1:
+				row_str += 'o'
 		row_str += '|'
 		print(row_str)
 		
