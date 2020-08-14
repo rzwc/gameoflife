@@ -1,3 +1,4 @@
+# program used to test next state of board function
 from next_board_state import next_board_state
 
 if __name__ == "__main__":
